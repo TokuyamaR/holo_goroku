@@ -3,6 +3,7 @@
   "extends": ["stylelint-config-standard", "stylelint-config-recess-order", "stylelint-config-prettier"],
   "ignoreFiles": ["**/node_modules/**"],
   "rules": {
-    "order/order": ["custom-properties", "declarations"]
+    "order/order": ["custom-properties", "declarations"],
+    "at-rule-no-unknown": [true, { "ignoreAtRules": ["tailwind"] }]
   }
 }
