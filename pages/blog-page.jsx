@@ -12,9 +12,9 @@ const Blog = ({ posts }) => {
 
 export default Blog;
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const posts = await getAllPostsData();
   return {
     props: { posts },
   };
-}
+};

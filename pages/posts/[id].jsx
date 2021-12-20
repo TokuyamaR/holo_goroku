@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Layout from 'components/Layout';
 import { getAllPostIds, getPostData } from 'lib/posts';
 
-export default function Post({ post }) {
+const Post = ({ post }) => {
   if (!post) {
     return <div>Loading...</div>;
   } else {
@@ -31,22 +31,24 @@ export default function Post({ post }) {
       </Layout>
     );
   }
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const paths = await getAllPostIds();
 
   return {
     paths,
     fallback: false, // 返されないパスは全て404となる(例えばid:101など)
   };
-}
+};
 
-export async function getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const { post: post } = await getPostData(params.id);
   return {
     props: {
       post,
     },
   };
-}
+};
+
+export default Post;
